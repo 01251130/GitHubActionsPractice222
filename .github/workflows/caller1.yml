@@ -15,11 +15,11 @@ on:
         required: true
         description: リリース有無
         type: boolean
+        default: false
 
 jobs:
   call_workflow:
-    - name: print
-      if: github.event.inputs.release
-      uses: ./.github/workflows/called.yml
-      with:
-        username: ${{ github.event.inputs.environment}}
+    if: github.event.inputs.release
+    uses: ./.github/workflows/called.yml
+    with:
+      username: ${{ github.event.inputs.release}}
