@@ -18,7 +18,8 @@ on:
 
 jobs:
   call_workflow:
-    if: github.event.inputs.release
-    uses: ./.github/workflows/called.yml
-    with:
-      username: ${{ github.event.inputs.environment}}
+    - name: print
+      if: github.event.inputs.release
+      uses: ./.github/workflows/called.yml
+      with:
+        username: ${{ github.event.inputs.environment}}
