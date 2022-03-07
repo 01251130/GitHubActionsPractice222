@@ -1,0 +1,17 @@
+name: Called
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        description: 'usernameの指定は必須です'
+        required: true
+        type: string
+
+jobs:
+  printUsername:
+    runs-on: ubuntu-latest
+    steps:
+      # 標準出力
+      - name: Print
+        run: echo The username is ${{ inputs.username }}
