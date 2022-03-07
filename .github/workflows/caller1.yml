@@ -19,8 +19,7 @@ on:
 
 jobs:
   call_workflow:
-    steps:
-      - if: github.event.inputs.release
-        uses: ./.github/workflows/called.yml
-        with:
-          username: ${{ github.event.inputs.release}}
+    if: github.event.inputs.release == true
+    uses: ./.github/workflows/called.yml
+    with:
+      username: ${{ github.event.inputs.release}}
