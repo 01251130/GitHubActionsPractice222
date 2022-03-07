@@ -1,12 +1,24 @@
 name: Caller1
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        description: 環境はどこ？
+        type: choice
+        options:
+          - aws
+          - aws2
+          - aws3
+      release:
+        required: true
+        description: リリース有無
+        type: boolean
 
 jobs:
   call_workflow:
+    if: release
     uses: ./.github/workflows/called.yml
     with:
-      username: haha
+      username: ${{ github.event.inputs.environment}}
