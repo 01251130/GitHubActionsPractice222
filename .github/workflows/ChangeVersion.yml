@@ -27,8 +27,6 @@ jobs:
     steps:
       # ソースコードをチェックアウト
       - uses: actions/checkout@v2
-        with:
-          ref: master
       # バージョンを設定、更新
       - name: change version
         run: |
