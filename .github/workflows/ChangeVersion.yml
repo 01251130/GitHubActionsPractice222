@@ -31,7 +31,7 @@ jobs:
       - name: change version
         run: |
           echo "VERSION=${{ github.event.inputs.major-version }}.${{ github.event.inputs.minor-version }}.${{ github.event.inputs.patch-version }}.${{ github.event.inputs.bundle-version }}" >> $GITHUB_ENV
-          sed -i"" -e "s|\'VERSION\':\ \'[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\'|\'VERSION\':\ \'$APP_VERSION\'|" version.js
+          sed -i"" -e "s|\'VERSION\':\ \'[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\'|\'VERSION\':\ \'$VERSION\'|" version.js
         shell: bash
 
       ## 更新をcommit, push
@@ -41,4 +41,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git add version.js && \
             git commit -m "バージョンを更新" --no-verify && \
-            git push --set-upstream origin master
+            git push --set-upstream origin main
