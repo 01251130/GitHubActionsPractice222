@@ -27,13 +27,13 @@ jobs:
     steps:
       # ソースコードをチェックアウト
       - uses: actions/checkout@v2
-      with:
+        with:
           ref: master
       # バージョンを設定、更新
       - name: change version
         run: |
-        echo "VERSION=${{ github.event.inputs.major-version }}.${{ github.event.inputs.minor-version }}.${{ github.event.inputs.patch-version }}.${{ github.event.inputs.bundle-version }}" >> $GITHUB_ENV
-        sed -i"" -e "s|\'VERSION\':\ \'[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\'|\'VERSION\':\ \'$APP_VERSION\'|" version.js
+          echo "VERSION=${{ github.event.inputs.major-version }}.${{ github.event.inputs.minor-version }}.${{ github.event.inputs.patch-version }}.${{ github.event.inputs.bundle-version }}" >> $GITHUB_ENV
+          sed -i"" -e "s|\'VERSION\':\ \'[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\'|\'VERSION\':\ \'$APP_VERSION\'|" version.js
         shell: bash
 
       ## 更新をcommit, push
