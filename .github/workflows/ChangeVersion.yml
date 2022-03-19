@@ -39,6 +39,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+      ## 更新をcommit, push
+      - name: Git commit and push2
+        run: |
           git add version.js && \
             git commit -m "バージョンを更新" --no-verify && \
             git push --set-upstream origin main
